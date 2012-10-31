@@ -1,7 +1,9 @@
 class MoviesController < ApplicationController
 
   def find_similar
+    @judul = Movie.find(params[:id]).title
     @movies = Movie.search(params[:id])
+    redirect_to movies_path if @movies == nil
   end
 
   def show
